@@ -54,11 +54,16 @@ public class TestValidateISBN {
         assertFalse(isValid, "second check");
     }
 
-    // Testing for an Exception (f.e NumberFormatException) using AssertThrows
     @Test
-    public void testISBNValidLength() {
+    public void testISBNInValidLength() {
         assertThrows(NumberFormatException.class,
                 () -> {validateISBN.checkISBN("123456789");});
+    }
+
+    @Test
+    public void test13DigitISBNInValidLength() {
+        assertThrows(NumberFormatException.class,
+                () -> {validateISBN.checkISBN("123456789123");});
     }
 
     @Test
