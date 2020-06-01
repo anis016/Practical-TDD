@@ -1,5 +1,6 @@
 package com.starter;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -7,12 +8,20 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TestValidateISBN {
-    ValidateISBN validateISBN;
+    static ValidateISBN validateISBN;
 
-    @BeforeEach
-    public void beforeEach() {
+    // for BeforeAll the method needs to be static.
+    // Call this method only once for creating object and then run all the @Test
+    @BeforeAll
+    public static void beforeAll() {
         validateISBN = new ValidateISBN();
     }
+
+    // Call this method every time before executing any @Test
+    /*@BeforeEach
+    public void beforeEach() {
+        validateISBN = new ValidateISBN();
+    }*/
 
     @Test
     public void testISBNIsValid() {
